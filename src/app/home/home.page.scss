@@ -31,3 +31,22 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+.label
+{
+    white-space: pre-line;
+    font-weight: bold;
+  
+  
+}
+.fields > ion-label {
+  padding: 12px;
+  margin: 0px;
+  -webkit-margin-end: 0px;
+  margin-inline-end: 0px;
+}
+ion-item.fields {
+  --inner-padding-end: 0;
+  --inner-border-width: 5px;
+  --min-height: 137px;
+  --padding-start: 0px;
+}

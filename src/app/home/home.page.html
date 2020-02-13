@@ -6,29 +6,78 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
+  <!-- to display the load of data -->
   <ion-list>
-    <ion-item *ngFor="let list of listarray" class="Listitem">
-      <img [src]="list.image" height="100px" width="100px">
+    <ion-item *ngFor="let list of listarray;let i=index" class="fields">
+      <img [src]="list.image" height="100px" width="100px" />
       <div class="newdetails">
-        <ion-label> Name:{{list.name}}</ion-label>
-        <span>
-          <ion-label>Species:{{list.species}}</ion-label>
-          <ion-label>Status:{{list.status}}</ion-label>
-          <ion-label>Origin{{list.origin?.name}}</ion-label>
-          <ion-label>Location:{{list.location?.name}}</ion-label>
-          <ion-label>Episode Count:{{list.episode?.length}}</ion-label>
-
-        </span>
+        <div>
+          <span class="label">
+            Name:&nbsp;
+          </span>
+          <span>
+            {{list?.name}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Species:&nbsp;
+          </span>
+          <span>
+            {{list?.species}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Status:&nbsp;
+          </span>
+          <span>
+            {{list?.status}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Origin:&nbsp;
+          </span>
+          <span>
+            {{list?.origin?.name}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Location:&nbsp;
+          </span>
+          <span>
+            {{list?.location?.name}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Episode Count:&nbsp;
+          </span>
+          <span>
+            {{list?.episode?.length}}
+          </span>
+        </div>
       </div>
     </ion-item>
-  </ion-list>  
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="infiniteScrollEnabled">
+  </ion-list>
+  <!-- this ion infinite scroll helps in loading the content -->
+  <ion-infinite-scroll
+    threshold="100px"
+    (ionInfinite)="loadData($event)"
+    *ngIf="infiniteScrollEnabled"
+  >
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
-      loadingText="Loading..">
+      loadingText="Loading.."
+    >
     </ion-infinite-scroll-content>
-  </ion-infinite-scroll>  
-  <div *ngIf="errorflag">
-No data Found! 
-  </div>
+  </ion-infinite-scroll>
+  <!-- if no data found or any Error response to indicate the user no data is available -->
+  <ng-container *ngIf="errorflag">
+    <div class="nodataavailable">
+      <h2>No data Found!</h2>
+    </div>
+  </ng-container>
 </ion-content>
