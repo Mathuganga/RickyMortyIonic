@@ -30,8 +30,6 @@ export interface IBaseResponse {
 }
 
 // tslint:disable-next-line: no-empty-interface
-export interface T {
-}
 export class Info {
   count: number;
   pages: number;

@@ -17,10 +17,8 @@ export class HomePage implements OnInit {
   urlnext: any;
   @ViewChild(IonInfiniteScroll, { static: false })
   infiniteScroll: IonInfiniteScroll;
-  locationarray: any[];
   constructor(public apiservice: ApicallService) {
     this.listarray = [];
-    this.locationarray = [];
   }
   ngOnInit() {
   // To load the data initially when the app is loaded
@@ -41,7 +39,6 @@ export class HomePage implements OnInit {
 
     // To get the charecters from using RickMorty API
   FetchAllList(url) {
-    this.locationarray = [];
     this.apiservice.getCharacters(url).subscribe(
       response => {
         this.totalResults = response.info.count;
@@ -50,7 +47,6 @@ export class HomePage implements OnInit {
       },
       err => {
         this.errorflag = true;
-        // console.log('er', err);
       },
       () => {
       }
