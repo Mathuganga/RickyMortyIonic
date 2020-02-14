@@ -50,7 +50,7 @@ export class HomePage implements OnInit {
       },
       err => {
         this.errorflag = true;
-        console.log('er', err);
+        // console.log('er', err);
       },
       () => {
       }
