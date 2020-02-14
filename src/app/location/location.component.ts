@@ -12,13 +12,13 @@ import { ApicallService } from '../apicall.service';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
-  styleUrls: ['./location.component.scss'],
+  styleUrls: ['./location.component.scss']
 })
 export class LocationComponent implements OnInit, OnChanges {
   @Input() listData;
   data: any;
   display: any;
-  constructor(public apiservice: ApicallService) { }
+  constructor(public apiservice: ApicallService) {}
   ngOnChanges(change: SimpleChanges) {
     this.data = this.listData;
   }
@@ -32,10 +32,8 @@ export class LocationComponent implements OnInit, OnChanges {
       response => {
         this.display = response;
       },
-      err => {
-      },
-      () => {
-      }
+      err => {},
+      () => {}
     );
   }
 }
