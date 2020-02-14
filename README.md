@@ -11,3 +11,9 @@ npm install -g @ionic/cli
 ## To load All dependencies for this particular Application you have to run
 npm install
 
+<<<<<<< HEAD
+=======
+## To run
+ionic serve
+
+>>>>>>> 2fd61e2260cf5eaa597452725af0cac7affbfbce
