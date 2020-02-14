@@ -1,0 +1,87 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>
+      Welcome To the Ricky Morty Profile Application
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <!-- to display the load of data -->
+  <ion-list>
+    <ion-item *ngFor="let list of listarray;let i=index" class="fields">
+      <img [src]="list.image" height="130px" width="130px" />
+      <div class="newdetails">
+        <div>
+          <span class="label">
+            Name:&nbsp;
+          </span>
+          <span>
+            {{list?.name || '--'}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Species:&nbsp;
+          </span>
+          <span>
+            {{list?.species || '--'}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Status:&nbsp;
+          </span>
+          <span>
+            {{list?.status || '--'}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Origin:&nbsp;
+          </span>
+          <span>
+            {{list?.origin?.name || '--'}}
+          </span>
+        </div>
+        <div>
+          <span class="label">
+            Location:&nbsp;
+          </span>
+          <span>
+            {{list?.location?.name || '--'}}
+          </span>
+          <!-- custom module to diplay location -->
+          <span>
+            <app-location [listData]="list?.location?.url"></app-location>
+          </span>
+        </div>
+        <div>
+          <span class="label">
+          Total No of Appearences:&nbsp;
+          </span>
+          <span>
+            {{list?.episode?.length || '--'}}
+          </span>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <!-- this ion infinite scroll helps in loading the content -->
+  <ion-infinite-scroll
+    threshold="100px"
+    (ionInfinite)="loadData($event)"
+    *ngIf="infiniteScrollEnabled"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading.."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- if no data found or any Error response to indicate the user no data is available -->
+  <ng-container *ngIf="errorflag">
+    <div class="nodataavailable">
+      <h2>No data Found!</h2>
+    </div>
+  </ng-container>
+</ion-content>
